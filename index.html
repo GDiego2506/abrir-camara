@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abrir Cámara</title>
+</head>
+<body>
+    <h2>Haz clic para activar tu cámara</h2>
+    <button onclick="openCamera()">Abrir Cámara</button>
+    <br><br>
+    <video id="video" autoplay></video>
+
+    <script>
+        function openCamera() {
+            navigator.mediaDevices.getUserMedia({ video: true })
+                .then(stream => {
+                    document.getElementById('video').srcObject = stream;
+                })
+                .catch(error => {
+                    alert("Error al acceder a la cámara: " + error);
+                });
+        }
+    </script>
+</body>
+</html>
